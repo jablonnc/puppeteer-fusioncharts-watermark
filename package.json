@@ -1,0 +1,10 @@
+{
+    "name": "screenshot-test",
+    "private": true,
+    "scripts": {
+        "start": "node src/index.js"
+    },
+    "devDependencies": {
+    "puppeteer": "^9.1.0"
+    }
+}
