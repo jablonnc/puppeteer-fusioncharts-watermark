@@ -2,9 +2,11 @@
     "name": "screenshot-test",
     "private": true,
     "scripts": {
+        "server": "node src/server.js",
         "start": "node src/index.js"
     },
     "devDependencies": {
-    "puppeteer": "^9.1.0"
+        "puppeteer": "9.1.0",
+        "express": "4.17.1"
     }
 }

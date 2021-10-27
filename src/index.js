@@ -1,4 +1,8 @@
+const path = require('path');
+const fs = require('fs');
 const puppeteer = require('puppeteer');
+
+// const fusionchartsSource = require('./fusioncharts');
 
  /*
  Set to true if you wish to keep the browser open for debugging purposes.
@@ -15,7 +19,6 @@ const KEEP_BROWSWER_OPEN = true;
             <meta http-equiv='X-UA-Compatible' content='IE=edge'>
             <meta name='viewport' content='width=device-width, initial-scale=1.0'>
             <title>Export</title>
-            <script src='https://cdn.fusioncharts.com/fusioncharts/3.18.0/fusioncharts.js'></script>
         </head>
         <body>
             <div id='chart-container'></div>
@@ -25,12 +28,13 @@ const KEEP_BROWSWER_OPEN = true;
     
     const browser = await puppeteer.launch({
         devtools: true,
-        slowMo: 250
+        // slowMo: 250
     });
     const page = await browser.newPage();
 
+    await page.setBypassCSP(true);
     await page.setContent(htmlContent);
-    await page.setViewport({ width: 1280, height: 800 });
+    await page.addScriptTag({ url: "http://localhost:3000/fusioncharts/fusioncharts.js" });
 
     await page.evaluate(
         () => {
